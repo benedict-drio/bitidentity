@@ -1,30 +1,30 @@
+(define-map identities
+  { id: (string-ascii 36) }
+  { identity: (string-ascii 256) })
 
-;; title: bitidentity
-;; version:
-;; summary:
-;; description:
+(define-private (is-valid-id (id (string-ascii 36)))
+  (and
+    (>= (len id) u1)
+    (<= (len id) u36)
+  )
+)
 
-;; traits
-;;
+(define-private (is-valid-identity (identity (string-ascii 256)))
+  (and
+    (>= (len identity) u1)
+    (<= (len identity) u256)
+  )
+)
 
-;; token definitions
-;;
+(define-public (create-identity (id (string-ascii 36)) (identity (string-ascii 256)))
+  (begin
+    (asserts! (is-valid-id id) (err u2))
+    (asserts! (is-valid-identity identity) (err u3))
+    (asserts! (is-none (map-get? identities { id: id })) (err u1))
+    (ok (map-insert identities { id: id } { identity: identity }))
+  )
+)
 
-;; constants
-;;
-
-;; data vars
-;;
-
-;; data maps
-;;
-
-;; public functions
-;;
-
-;; read only functions
-;;
-
-;; private functions
-;;
-
+(define-read-only (get-identity (id (string-ascii 36)))
+  (map-get? identities { id: id })
+)
