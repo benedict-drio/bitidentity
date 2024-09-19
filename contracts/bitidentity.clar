@@ -2,6 +2,20 @@
   { id: (string-ascii 36) }
   { identity: (string-ascii 256) })
 
+(define-private (is-valid-id (id (string-ascii 36)))
+  (and
+    (>= (len id) u1)
+    (<= (len id) u36)
+  )
+)
+
+(define-private (is-valid-identity (identity (string-ascii 256)))
+  (and
+    (>= (len identity) u1)
+    (<= (len identity) u256)
+  )
+)
+
 (define-public (create-identity (id (string-ascii 36)) (identity (string-ascii 256)))
   (ok (map-insert identities { id: id } { identity: identity }))
 )
