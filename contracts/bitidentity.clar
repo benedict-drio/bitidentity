@@ -1,30 +1,7 @@
+(define-map identities
+  { id: (string-ascii 36) }
+  { identity: (string-ascii 256) })
 
-;; title: bitidentity
-;; version:
-;; summary:
-;; description:
-
-;; traits
-;;
-
-;; token definitions
-;;
-
-;; constants
-;;
-
-;; data vars
-;;
-
-;; data maps
-;;
-
-;; public functions
-;;
-
-;; read only functions
-;;
-
-;; private functions
-;;
-
+(define-public (create-identity (id (string-ascii 36)) (identity (string-ascii 256)))
+  (ok (map-insert identities { id: id } { identity: identity }))
+)
