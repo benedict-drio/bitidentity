@@ -5,3 +5,7 @@
 (define-public (create-identity (id (string-ascii 36)) (identity (string-ascii 256)))
   (ok (map-insert identities { id: id } { identity: identity }))
 )
+
+(define-read-only (get-identity (id (string-ascii 36)))
+  (map-get? identities { id: id })
+)
