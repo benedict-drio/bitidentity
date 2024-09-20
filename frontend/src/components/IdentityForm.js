@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 const IdentityForm = () => {
 	const [identity, setIdentity] = useState('');
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		// Handle form submission
+		await axios.post('http://localhost:3000/api/identities', { identity });
+		setIdentity(''); // Clear input field
 	};
 
 	return (
