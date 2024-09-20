@@ -1,4 +1,6 @@
-const { expect } = require("chai");
+import { describe, it } from 'vitest';
+import { expect } from 'chai';
+
 const { callReadOnlyFunction, getTxResult } = require("@stacks/stacking");
 
 describe("bitidentity.clar", () => {
