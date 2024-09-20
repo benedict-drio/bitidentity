@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const IdentityList = () => {
-  return (
-    <ul>
-      {/* List of identities will be rendered here */}
-    </ul>
-  );
+	const [identities, setIdentities] = useState([]);
+
+	return (
+		<ul>
+			{/* List of identities will be rendered here */}
+		</ul>
+	);
 };
 
 export default IdentityList;
