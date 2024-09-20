@@ -10,3 +10,12 @@ exports.encrypt = (text) => {
   encrypted = Buffer.concat([encrypted, cipher.final()]);
   return { iv: iv.toString('hex'), encryptedData: encrypted.toString('hex') };
 };
+
+exports.decrypt = (text, iv) => {
+  let ivBuffer = Buffer.from(iv, 'hex');
+  let encryptedText = Buffer.from(text, 'hex');
+  let decipher = crypto.createDecipheriv(algorithm, Buffer.from(key), ivBuffer);
+  let decrypted = decipher.update(encryptedText);
+  decrypted = Buffer.concat([decrypted, decipher.final()]);
+  return decrypted.toString();
+};
