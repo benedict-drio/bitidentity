@@ -1,6 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const identityRoutes = require('./routes/identityRoutes');
+const rateLimiter = require('./middleware/rateLimiter');
+
+app.use(rateLimiter);
+
 
 const app = express();
 app.use(bodyParser.json());
