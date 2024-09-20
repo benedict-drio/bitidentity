@@ -3,8 +3,13 @@ import React, { useState } from 'react';
 const IdentityForm = () => {
 	const [identity, setIdentity] = useState('');
 
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		// Handle form submission
+	};
+
 	return (
-		<form>
+		<form onSubmit={handleSubmit}>
 			<input
 				type="text"
 				value={identity}
