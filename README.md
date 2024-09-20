@@ -63,5 +63,3 @@ A decentralized identity platform built on Stacks, leveraging Clarity smart cont
 - **Node.js API**: Complete with endpoints for identity management and verification.
 - **Documentation**: Full documentation on the contract and API usage.
 - **Frontend**: (If included) A minimal interface to demonstrate the platform.
-
-I’ll move forward with implementing these features and provide you with a complete package once everything is done!
