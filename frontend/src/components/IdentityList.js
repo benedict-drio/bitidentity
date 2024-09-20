@@ -14,7 +14,9 @@ const IdentityList = () => {
 
 	return (
 		<ul>
-			{/* List of identities will be rendered here */}
+			{identities.map((identity) => (
+				<li key={identity.id}>{identity.data}</li>
+			))}
 		</ul>
 	);
 };
