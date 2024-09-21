@@ -1,21 +1,20 @@
+import { describe, it } from "vitest";
+import { expect } from "chai";
 
-import { describe, expect, it } from "vitest";
+const { callReadOnlyFunction, getTxResult } = require("@stacks/stacking");
 
-const accounts = simnet.getAccounts();
-const address1 = accounts.get("wallet_1")!;
+describe("bitidentity.clar", () => {
+  it("should create and retrieve an identity", async () => {
+    const txResult = await callReadOnlyFunction("create-identity", {
+      id: "test-id",
+      identity: "test-identity",
+    });
 
-/*
-  The test below is an example. To learn more, read the testing documentation here:
-  https://docs.hiro.so/stacks/clarinet-js-sdk
-*/
+    expect(txResult).to.have.property("result", "Identity created");
 
-describe("example tests", () => {
-  it("ensures simnet is well initalised", () => {
-    expect(simnet.blockHeight).toBeDefined();
+    const identity = await callReadOnlyFunction("get-identity", {
+      id: "test-id",
+    });
+    expect(identity).to.have.property("identity", "test-identity");
   });
-
-  // it("shows an example", () => {
-  //   const { result } = simnet.callReadOnlyFn("counter", "get-counter", [], address1);
-  //   expect(result).toBeUint(0);
-  // });
 });

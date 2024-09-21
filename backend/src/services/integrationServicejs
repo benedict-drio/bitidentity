@@ -1,0 +1,10 @@
+const axios = require('axios');
+
+exports.fetchExternalData = async () => {
+	try {
+		const response = await axios.get('https://api.example.com/data');
+		return response.data;
+	} catch (error) {
+		throw new Error('Error fetching external data');
+	}
+};
